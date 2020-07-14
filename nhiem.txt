@@ -1,1 +1,0 @@
-nhiem,image,phone,location
