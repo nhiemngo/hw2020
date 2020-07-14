@@ -3,4 +3,6 @@
     <li>{{.Image}}</li>
     <li>{{.Location}}</li>
     <li>{{.Phone}}</li>
+    {{range .Schedule}}
+    <li>{{.Date}}: {{.StartTime}} - {{.EndTime}}{{end}}
 </ul>

@@ -1,0 +1,13 @@
+<!-- login.html -->
+{{if .Success}}
+    <h1>Logged in!</h1>
+{{else}}
+    <h1>Log in</h1>
+    <form method="POST">
+        <label>Name:</label><br />
+        <input type="text" name="Name"><br />
+        <label>Password:</label><br />
+        <input type="text" name="Password"><br />
+        <input type="submit">
+    </form>
+{{end}}
