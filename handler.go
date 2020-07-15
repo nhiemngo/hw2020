@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gorilla/mux"
 	"github.com/skip2/go-qrcode"
 	"html/template"
 	"net/http"
@@ -31,8 +32,9 @@ func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
-	queryString := r.URL.Query()
-	id := queryString.Get("id")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
 	s := app.db.loadSeller(id)
 
 	fmt.Println("LOCATION:", s.Location)
@@ -82,10 +84,10 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	id := app.db.save(currentSeller)
 	id_str := strconv.Itoa(int(id))
 
-	link := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id_str)
+	link := fmt.Sprintf("https://%v/view/%v", baseURL, id_str)
 	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
 
-	http.Redirect(w, r, "/view/?id="+id_str, http.StatusFound)
+	http.Redirect(w, r, "/view/"+id_str, http.StatusFound)
 }
 
 type DisplayVars struct {

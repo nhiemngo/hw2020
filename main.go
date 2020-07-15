@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
@@ -12,6 +13,7 @@ type application struct {
 }
 
 func main() {
+	// database stuffs
 	db, err := sql.Open("mysql", "user:password@/sellerdb")
 	if err != nil {
 		log.Fatalln(err)
@@ -20,20 +22,26 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	mux := http.NewServeMux()
-
 	app := application{
 		&sellerDB{
 			DB: db,
 		},
 	}
-	mux.HandleFunc("/", functionHandler)
-	mux.HandleFunc("/view/", app.viewHandler)
-	mux.HandleFunc("/testseller/", viewTestSellerHandler)
-	mux.HandleFunc("/create/", app.createHandler)
-	mux.HandleFunc("/login/", login)
-	mux.HandleFunc("/logout/", logout)
-	mux.HandleFunc("/secret/", secret)
 
-	http.ListenAndServe(":2000", mux)
+	//server stuffs
+	rt := mux.NewRouter()
+
+	rt.HandleFunc("/", functionHandler)
+
+	rt.HandleFunc("/view/{id}", app.viewHandler)
+	rt.HandleFunc("/view/{id}/", app.viewHandler)
+
+	rt.HandleFunc("/testseller/", viewTestSellerHandler)
+
+	rt.HandleFunc("/create/", app.createHandler)
+	rt.HandleFunc("/login/", login)
+	rt.HandleFunc("/logout/", logout)
+	rt.HandleFunc("/secret/", secret)
+
+	http.ListenAndServe(":2000", rt)
 }
