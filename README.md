@@ -1,16 +1,18 @@
 # Seller Identity Package
 
-## Starting the server
-cd \<name of folder>
-
-go build \<name of folder> (or go build *.go)
-
-Setting up the database:
+## Getting the server running
+Set up the database:
 - sudo mysql
 - source "path to database.sql"
 - source "path to test_data.sql" (optional to fill database with data)
 
-navigate to localhost:2000 (that 2000 is a random port number btw)
+Install missing packages (if any) 
+
+cd \<name of folder>
+
+go build \<name of folder> (or go build *.go)
+
+navigate to localhost:2000
 
 ## Currently supported:
 localhost:2000/ - landing page
