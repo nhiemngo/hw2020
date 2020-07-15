@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap");
+
+/*
+<div class="img-grid">
+
+.img-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+*/
+
+* {
+    font-family: Poppins;
+}
+
+.body {
+    background-color: green;
+}
+
+.photo-reel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.reel-img {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    object-fit: cover;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-gap: 20px;
+}
+
+.reel-img:hover {
+    opacity: 0.7;
+}
+
+.about-column {
+    display: grid;
+    max-width: 970px;
+    margin: 0 auto; /* centering */
+    padding: 40px;
+}
+
+.content-column {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    grid-gap: 40px;
+    max-width: 970px;
+    margin: 0 auto; /* centering */
+    padding: 40px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+ul {
+    padding-left: 8px;
+}
+
+.icon-box {
+    display: inline-block;
+    width: 24px;
+    position: relative;
+    /* Adjust these values accordingly */
+    right: 5px;
+}
+
+
+.top-buffer {
+    margin-top: 10px;
+}
+
+.ul {
+    padding-left: 1.2em;
+}
+
+.mycircleimg {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    /*   object-fit:cover; */
+}
+
+#pads {
+    position: relative;
+    right: 30%;
+    top: 70px;
+    white-space: nowrap;
+}
+
+#myImg {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    object-fit: cover;
+}
+
+#myImg:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    width: 500px;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content,
+#caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* SOCIAL BUTTONS */
+
+.icon-box {
+    display: inline-block;
+    width: 24px;
+    position: relative;
+    /* Adjust these values accordingly */
+    right: 5px;
+}
+
+
+.top-buffer {
+    margin-top: 10px;
+}
+
+/* Wrapper */
+.icon-button {
+    background-color: white;
+    border-radius: 3.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2.0rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 3.6rem;
+}
+
+/* Circle */
+.icon-button span {
+    border-radius: 0;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 0;
+}
+.icon-button:hover span {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 3.6rem;
+    margin: -1.8rem;
+}
+.twitter span {
+    background-color: #4099ff;
+}
+.facebook span {
+    background-color: #3B5998;
+}
+.instagram span {
+    background-color: #125688;
+}
+.pinterest span {
+    background-color: #cb2027;
+}
+
+/* Icons */
+.icon-button i {
+    background: none;
+    color: white;
+    height: 3.6rem;
+    left: 0;
+    line-height: 3.6rem;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 3.6rem;
+    z-index: 10;
+}
+.icon-button .fa-twitter {
+    color: #4099ff;
+}
+.icon-button .fa-facebook-f {
+    color: #3B5998;
+}
+.icon-button .fa-instagram {
+    color: #125688;
+}
+.icon-button .fa-pinterest-p {
+    color: #cb2027;
+}
+.icon-button:hover .fa-twitter,
+.icon-button:hover .fa-facebook-f,
+.icon-button:hover .fa-instagram,
+.icon-button:hover .fa-pinterest-p {
+    color: white;
+}

@@ -18,7 +18,7 @@ func functionHandler(w http.ResponseWriter, r *http.Request) {
 func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 	s := testSeller()
 
-	tmpl, err := template.ParseFiles("display.html")
+	tmpl, err := template.ParseFiles("templates/display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -47,7 +47,7 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 		Lng:           lng,
 	}
 
-	tmpl, err := template.ParseFiles("display.html")
+	tmpl, err := template.ParseFiles("templates/display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Square Merchant Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css'>
+    <link rel="stylesheet" type="text/css" href="/css/display_style.css">
+</head>
+<body>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<div class="section">
+    <div class="content-column">
+        <div class="photo-reel">
+            <img class="myImages" id="myImg" src="https://s.hdnux.com/photos/01/10/47/13/19034840/3/920x920.jpg">
+            <img class="myImages" id="myImg" src="https://m.media-amazon.com/images/I/51f6xemth2L._SX260_.jpg">
+            <img class="myImages" id="myImg" src="https://cdn.vox-cdn.com/thumbor/q-qb2g-XzWlGhjPTn9Uv9wwkaPs=/0x0:800x533/920x613/filters:focal(336x203:464x331):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/56133169/SaltandStraw_PChang_1117.0.jpg">
+            <img class="myImages" id="myImg" src="https://ca-times.brightspotcdn.com/dims4/default/629b16b/2147483647/strip/true/crop/1500x843+0+0/resize/840x472!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fdd%2F95%2Ffbb6392b6957751532172b6d0abd%2Fsd-1545861472-clxxf0xgds-snap-image">
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="content-column">
+        <div>
+            <h1>
+                {{.Name}}
+            </h1>
+            <ul style="list-style: none;">
+                <li>
+                    <div class="icon-box">
+                        <i class='fas fa-map-marker-alt top-buffer' style='font-size:20px'></i></div>
+                    {{.Location}}
+                </li>
+                <li>
+                    <div class="icon-box">
+                        <i class="fa fa-envelope top-buffer" style='font-size:20px'></i></div>
+                    saltandstraw@saltandstraw.com
+                </li>
+                <li>
+                    <div class="icon-box">
+                        <i class="fas fa-phone-volume top-buffer" aria-hidden="true" style='font-size:20px'></i>
+                    </div>
+                    {{.Phone}}
+                </li>
+            </ul>
+            <a href="https://twitter.com/" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+            <a href="https://facebook.com" class="icon-button facebook"><i class="fab fa-facebook-f"></i><span></span></a>
+            <a href="https://www.instagram.com/" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+            <a href="https://www.pinterest.com/" class="icon-button pinterest"><i class="fab fa-pinterest-p"></i><span></span></a>
+        </div>
+        <div>
+            <img src={{.Logo}} class="mycircleimg" />
+        </div>
+    </div>
+</div>
+
+<div class="section" style="background: #fED">
+    <div class="about-column">
+        <div>
+            <h2>About</h2>
+            <p>
+                We make ice cream about the ingredients we use and the farms and artisans they come from. About how we cook and freeze and candy and sort and burn and smash and hand-drizzle and ribbon and spoon and sprinkle all of our ingredients in intriguing and unexpected ways.
+            </p>
+        </div><!-- About -->
+    </div>
+</div>
+
+<div class="section">
+    <div class="content-column">
+        <div>
+            <h2>Hours</h2>
+            <div class="hours-grid">
+                <div>
+                    <dt>Mon</dt>
+                    <dt>Tues</dt>
+                    <dt>Wed</dt>
+                    <dt>Thurs</dt>
+                    <dt>Fri</dt>
+                    <dt>Sat</dt>
+                    <dt>Sun</dt>
+                </div>
+                <div style="white-space: nowrap">
+                    <ul style="list-style: none;">
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                        <li>5:30 am - 7:00 pm</li>
+                    </ul>
+                </div>
+                <div style="white-space: nowrap">
+                    <ul style="list-style: none;">
+                        <li>Portland</li>
+                        <li>Los Angeles</li>
+                        <li>Los Angeles</li>
+                        <li>San Diego</li>
+                        <li>Santa Clara</li>
+                        <li>San Francisco</li>
+                        <li>San Francisco</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Location</h2>
+            <h8> this is our map </h8>
+        </div>
+    </div>
+</div>
+<script src="/js/display_script.js"></script>
+
+</body>
+
+</html>
+
