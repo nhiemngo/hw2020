@@ -1,14 +1,10 @@
 INSERT INTO seller (name,
-                    username,
-                    password,
                     logo,
                     image,
                     phone,
                     location)
 VALUES (
     'name',
-    'username',
-    'password',
     'logo',
     'image',
     'phone',
@@ -75,16 +71,12 @@ VALUES (
 );
 
 INSERT INTO seller (name,
-                    username,
-                    password,
                     logo,
                     image,
                     phone,
                     location)
 VALUES (
     'second',
-    'second_username',
-    'second_password',
     'second_logo',
     'second_image',
     'second_phone',

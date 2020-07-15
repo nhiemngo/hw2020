@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-
+	"strconv"
 	"github.com/skip2/go-qrcode"
 )
 
@@ -60,18 +60,19 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("form submitted!")
 
-	sellerName := r.FormValue("Name")
-	link := fmt.Sprintf("https://%v/view/?name=%v", baseURL, sellerName)
-	qrcode.WriteFile(link, qrcode.Medium, 256, sellerName+"_qr.png")
-
 	currentSeller := Seller{
 		Name:     r.FormValue("Name"),
+		Logo:	  r.FormValue("Logo"),
 		Image:    r.FormValue("Image"),
 		Phone:    r.FormValue("Phone"),
 		Location: r.FormValue("Location"),
 	}
 
-	app.db.save(currentSeller)
+	id := app.db.save(currentSeller)
+	id_str := strconv.Itoa(int(id))
 
-	http.Redirect(w, r, "/view/?name="+r.FormValue("Name"), http.StatusFound)
+	link := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id_str)
+	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
+
+	http.Redirect(w, r, "/view/?id="+id_str, http.StatusFound)
 }

@@ -12,6 +12,7 @@ type sellerDB struct {
 
 type Seller struct {
 	Name     string
+	Logo	 string
 	Image    string
 	Phone    string
 	Location string // can be used for map. or DaySchedule.Address can be used instead if we want to do multiple locations
@@ -59,6 +60,7 @@ func testSeller() *Seller {
 
 func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var name string
+	var logo string
 	var image string
 	var phone string
 	var location string
@@ -68,22 +70,24 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 		return nil
 	}
 
-	row := sDB.DB.QueryRow(`SELECT name, image, phone, location FROM seller WHERE id=?`, n_id)
-	error := row.Scan(&name, &image, &phone, &location)
+	row := sDB.DB.QueryRow(`SELECT name, logo, image, phone, location FROM seller WHERE id=?`, n_id)
+	error := row.Scan(&name, &logo, &image, &phone, &location)
 	if error != nil {
 		return nil
 	}
 	return &Seller{
 		Name:     name,
+		Logo:	  logo,
 		Image:    image,
 		Phone:    phone,
 		Location: location,
 	}
 }
 
-func (sDB *sellerDB) save(s Seller) error {
-	insert, err := sDB.DB.Query(`INSERT INTO seller (
+func (sDB *sellerDB) save(s Seller) int64 {
+	res, err := sDB.DB.Exec(`INSERT INTO seller (
 		name,
+		logo,
 		image,
 		phone,
 		location)
@@ -91,11 +95,19 @@ func (sDB *sellerDB) save(s Seller) error {
 		?,
 		?,
 		?,
+		?,
 		?
-	);`, s.Name, s.Image, s.Phone, s.Location)
+	);`, s.Name, s.Logo, s.Image, s.Phone, s.Location)
 	if err != nil {
-		panic(err.Error())
+		println("Exec err:", err.Error())
+	} else {
+		id, err := res.LastInsertId()
+		if err != nil {
+			println("Error:", err.Error())
+		} else {
+			return id
+		}
 	}
-	defer insert.Close()
-	return err
+
+	return -1
 }
