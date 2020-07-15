@@ -10,7 +10,6 @@ type Seller struct {
 	Name     string
 	Image    string
 	Phone    string
-	Email    string
 	Location string // dynamic location not yet supported???
 	Schedule []*DaySchedule
 }
