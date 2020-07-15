@@ -4,7 +4,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"database/sql"
+	"strconv"
 )
+
+type sellerDB struct {
+	DB *sql.DB
+}
 
 type Seller struct {
 	Name     string
@@ -52,15 +58,27 @@ func testSeller() *Seller {
 	return s
 }
 
-func loadSeller(title string) *Seller {
-	filename := title + ".txt"
-	s, _ := ioutil.ReadFile(filename)
-	sellerInfo := strings.Split(string(s), ",")
+func (sDB *sellerDB) loadSeller (id string) *Seller {
+	var name string
+	var image string
+	var phone string
+	var location string
+
+	n_id, err := strconv.Atoi(id)
+	if err != nil {
+		return nil
+	}
+
+	row := sDB.DB.QueryRow(`SELECT name, image, phone, location FROM seller WHERE id=?`,n_id)
+	error := row.Scan(&name, &image, &phone, &location)
+	if error != nil {
+		return nil
+	}
 	return &Seller{
-		Name:     sellerInfo[0],
-		Image:    sellerInfo[1],
-		Phone:    sellerInfo[2],
-		Location: sellerInfo[3],
+		Name:     name,
+		Image:    image,
+		Phone:    phone,
+		Location: location,
 	}
 }
 

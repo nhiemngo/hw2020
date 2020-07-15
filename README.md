@@ -12,7 +12,7 @@ localhost:2000/ - landing page
 
 localhost:2000/create/ - create new seller
 
-localhost:2000/view/?name="name of seller" - display seller info
+localhost:2000/view/?id="id of seller" - display seller info
 
 ## todo:
 - authentication stuffs & enable sessions for users

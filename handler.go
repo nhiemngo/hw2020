@@ -26,11 +26,10 @@ func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func viewHandler(w http.ResponseWriter, r *http.Request) {
+func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 	queryString := r.URL.Query()
-	name := queryString.Get("name")
-	s := loadSeller(name)
-
+	id := queryString.Get("id")
+	s := app.db.loadSeller(id)
 	tmpl, err := template.ParseFiles("display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
