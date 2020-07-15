@@ -1,10 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"strings"
 	"database/sql"
+	"fmt"
 	"strconv"
 )
 
@@ -58,7 +56,7 @@ func testSeller() *Seller {
 	return s
 }
 
-func (sDB *sellerDB) loadSeller (id string) *Seller {
+func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var name string
 	var image string
 	var phone string
@@ -69,7 +67,7 @@ func (sDB *sellerDB) loadSeller (id string) *Seller {
 		return nil
 	}
 
-	row := sDB.DB.QueryRow(`SELECT name, image, phone, location FROM seller WHERE id=?`,n_id)
+	row := sDB.DB.QueryRow(`SELECT name, image, phone, location FROM seller WHERE id=?`, n_id)
 	error := row.Scan(&name, &image, &phone, &location)
 	if error != nil {
 		return nil
@@ -82,7 +80,21 @@ func (sDB *sellerDB) loadSeller (id string) *Seller {
 	}
 }
 
-func (s *Seller) save() error {
-	filename := s.Name + ".txt"
-	return ioutil.WriteFile(filename, []byte(strings.Join([]string{s.Name, s.Image, s.Phone, s.Location}, ",")), 0600)
+func (sDB *sellerDB)  save(s Seller) error {
+	insert, err := sDB.DB.Query(`INSERT INTO seller (
+		name,
+		image,
+		phone,
+		location)
+	VALUES (
+		?,
+		?,
+		?,
+		?
+	);`, s.Name, s.Image, s.Phone, s.Location)
+	if err != nil {
+		panic(err.Error())
+	}
+	defer insert.Close()
+	return err
 }

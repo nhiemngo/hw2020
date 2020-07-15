@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net/http"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
+	"net/http"
 )
 
 type application struct {
@@ -30,7 +30,7 @@ func main() {
 	mux.HandleFunc("/", functionHandler)
 	mux.HandleFunc("/view/", app.viewHandler)
 	mux.HandleFunc("/testseller/", viewTestSellerHandler)
-	mux.HandleFunc("/create/", createHandler)
+	mux.HandleFunc("/create/", app.createHandler)
 	mux.HandleFunc("/login/", login)
 	mux.HandleFunc("/logout/", logout)
 	mux.HandleFunc("/secret/", secret)
