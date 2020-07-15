@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"github.com/skip2/go-qrcode"
 )
+
+const baseURL = "24cdf7b47d2d.ngrok.io"
 
 func functionHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("insert landing page"))
@@ -55,6 +59,11 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("form submitted!")
+
+	sellerName := r.FormValue("Name")
+	link := fmt.Sprintf("https://%v/view/?name=%v", baseURL, sellerName)
+	qrcode.WriteFile(link, qrcode.Medium, 256, sellerName+"_qr.png")
+
 	currentSeller := Seller{
 		Name:     r.FormValue("Name"),
 		Image:    r.FormValue("Image"),
