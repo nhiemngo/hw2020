@@ -1,9 +1,9 @@
 # Seller Identity Package
 
 ## Starting the server
-cd <name of folder>
+cd \<name of folder>
 
-go build <name of folder> (or go build *.go)
+go build \<name of folder> (or go build *.go)
 
 Setting up the database:
 - sudo mysql
