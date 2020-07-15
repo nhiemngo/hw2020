@@ -30,11 +30,10 @@ func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func viewHandler(w http.ResponseWriter, r *http.Request) {
+func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 	queryString := r.URL.Query()
-	name := queryString.Get("name")
-	s := loadSeller(name)
-
+	id := queryString.Get("id")
+	s := app.db.loadSeller(id)
 	tmpl, err := template.ParseFiles("display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -48,7 +47,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func createHandler(w http.ResponseWriter, r *http.Request) {
+func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("form.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -72,7 +71,7 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 		Location: r.FormValue("Location"),
 	}
 
-	currentSeller.save()
+	app.db.save(currentSeller)
 
 	http.Redirect(w, r, "/view/?name="+r.FormValue("Name"), http.StatusFound)
 }
