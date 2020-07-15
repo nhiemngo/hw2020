@@ -14,12 +14,13 @@ type Seller struct {
 	Name     string
 	Image    string
 	Phone    string
-	Location string // dynamic location not yet supported???
+	Location string // can be used for map. or DaySchedule.Address can be used instead if we want to do multiple locations
 	Schedule []*DaySchedule
 }
 
 type DaySchedule struct {
 	Date      string
+	Address   string // where the seller will be on this day
 	StartTime string
 	EndTime   string
 }
