@@ -28,6 +28,8 @@ func main() {
 		},
 	}
 	mux.HandleFunc("/", functionHandler)
+	fs := http.FileServer(http.Dir("templates"))
+	http.Handle("/css/", fs)
 	mux.HandleFunc("/view/", app.viewHandler)
 	mux.HandleFunc("/testseller/", viewTestSellerHandler)
 	mux.HandleFunc("/create/", app.createHandler)
