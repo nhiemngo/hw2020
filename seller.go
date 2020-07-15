@@ -80,7 +80,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	}
 }
 
-func (sDB *sellerDB)  save(s Seller) error {
+func (sDB *sellerDB) save(s Seller) error {
 	insert, err := sDB.DB.Query(`INSERT INTO seller (
 		name,
 		image,
