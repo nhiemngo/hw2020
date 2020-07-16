@@ -29,18 +29,6 @@ VALUES (
     'pinterest'
 );
 
-second_image,
-third_image,
-fourth_image,
-fifth_image,
-phone,
-location,
-email,
-twitter,
-facebook,
-instagram,
-pinterest,
-
 INSERT INTO schedule (monday,
                       tuesday,
                       wednesday,
