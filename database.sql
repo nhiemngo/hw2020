@@ -14,8 +14,17 @@ id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(30) NOT NULL,
 logo TEXT,
 image TEXT,
+second_image TEXT,
+third_image TEXT,
+fourth_image TEXT,
+fifth_image TEXT,
 phone VARCHAR(20),
-location VARCHAR(50)
+location VARCHAR(50),
+email VARCHAR(40),
+twitter VARCHAR(20),
+facebook VARCHAR(50),
+instagram VARCHAR(30),
+pinterest VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS schedule (
@@ -48,5 +57,13 @@ thursday_location VARCHAR(50),
 friday_location VARCHAR(50),
 saturday_location VARCHAR(50),
 sunday_location VARCHAR(50),
+monday_address VARCHAR(50),
+tuesday_address VARCHAR(50),
+wednesday_address VARCHAR(50),
+thursday_address VARCHAR(50),
+friday_address VARCHAR(50),
+saturday_address VARCHAR(50),
+sunday_address VARCHAR(50),
+
 FOREIGN KEY (id) REFERENCES seller(id)
 );

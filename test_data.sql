@@ -1,15 +1,43 @@
 INSERT INTO seller (name,
                     logo,
-                    image,
+                    second_image,
+                    third_image,
+                    fourth_image,
+                    fifth_image,
                     phone,
-                    location)
+                    location,
+                    email,
+                    twitter,
+                    facebook,
+                    instagram,
+                    pinterest)
 VALUES (
     'name',
     'logo',
-    'image',
+    'second_image',
+    'third_image',
+    'fourth_image',
+    'fifth_image',
     'phone',
-    'location'
+    'location',
+    'email',
+    'twitter',
+    'facebook',
+    'instagram',
+    'pinterest'
 );
+
+second_image,
+third_image,
+fourth_image,
+fifth_image,
+phone,
+location,
+email,
+twitter,
+facebook,
+instagram,
+pinterest,
 
 INSERT INTO schedule (monday,
                       tuesday,
@@ -38,7 +66,14 @@ INSERT INTO schedule (monday,
                       thursday_location,
                       friday_location,
                       saturday_location,
-                      sunday_location)
+                      sunday_location,
+                      monday_address,
+                      tuesday_address,
+                      wednesday_address,
+                      thursday_address,
+                      friday_address,
+                      saturday_address,
+                      sunday_address)
 VALUES (
     TRUE,
     TRUE,
@@ -67,21 +102,44 @@ VALUES (
     'l2',
     'l1',
     'l2',
-    'l1'
+    'l1',
+    'a1',
+    'a2',
+    'a1',
+    'a1',
+    'a1',
+    'a1',
+    'a1'
 );
 
 INSERT INTO seller (name,
                     logo,
-                    image,
+                    second_image,
+                    third_image,
+                    fourth_image,
+                    fifth_image,
                     phone,
-                    location)
+                    location,
+                    email,
+                    twitter,
+                    facebook,
+                    instagram,
+                    pinterest)
 VALUES (
-    'second',
-    'second_logo',
-    'second_image',
-    'second_phone',
-    'second_location'
-);
+           'name2',
+           'logo2',
+           'second_image2',
+           'third_image2',
+           'fourth_image2',
+           'fifth_image2',
+           'phone2',
+           'location2',
+           'email2',
+           'twitter2',
+           'facebook2',
+           'instagram2',
+           'pinterest2'
+       );
 
 INSERT INTO schedule (monday,
                       tuesday,
@@ -110,7 +168,14 @@ INSERT INTO schedule (monday,
                       thursday_location,
                       friday_location,
                       saturday_location,
-                      sunday_location)
+                      sunday_location,
+                      monday_address,
+                      tuesday_address,
+                      wednesday_address,
+                      thursday_address,
+                      friday_address,
+                      saturday_address,
+                      sunday_address)
 VALUES (
            TRUE,
            TRUE,
@@ -139,5 +204,12 @@ VALUES (
            'l1',
            'l1',
            'l1',
-           'l1'
+           'l1',
+           'a1',
+           'a1',
+           'a1',
+           'a1',
+           'a1',
+           'a1',
+           'a1'
        );
