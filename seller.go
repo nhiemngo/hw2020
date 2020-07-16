@@ -12,6 +12,7 @@ type sellerDB struct {
 
 type Seller struct {
 	Name      string
+	About	  string
 	Logo      string
 	Image     string
 	Image_2   string
@@ -71,6 +72,7 @@ func testSeller() *Seller {
 
 func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var name string
+	var about string
 	var logo string
 	var image string
 	var image_2 string
@@ -266,6 +268,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	ds = append(ds, sunSched)
 
 	row = sDB.DB.QueryRow(`SELECT name, 
+									about
 									logo, 
 									image, 
 									second_image, 
@@ -279,13 +282,14 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 									facebook,
 									instagram,
 									pinterest FROM seller WHERE id=?`, n_id)
-	error = row.Scan(&name, &logo, &image, &image_2, &image_3, &image_4, &image_5, &phone, &location,
+	error = row.Scan(&name, &about, &logo, &image, &image_2, &image_3, &image_4, &image_5, &phone, &location,
 		&email, &twitter, &facebook, &instagram, &pinterest)
 	if error != nil {
 		return nil
 	}
 	return &Seller{
 		Name:      name,
+		About:	   about
 		Logo:      logo,
 		Image:     image,
 		Image_2:   image_2,
@@ -306,6 +310,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 func (sDB *sellerDB) save(s Seller) int64 {
 	insert, err := sDB.DB.Query(`INSERT INTO seller (
 		name,
+		about,
 		logo,
 		image,
 		second_image,
@@ -335,7 +340,7 @@ func (sDB *sellerDB) save(s Seller) int64 {
 		?,
 		?,
 		?
-	);`, s.Name, s.Logo, s.Image, s.Image_2, s.Image_3, s.Image_4, s.Image_5,
+	);`, s.Name, s.About, s.Logo, s.Image, s.Image_2, s.Image_3, s.Image_4, s.Image_5,
 		s.Phone, s.Location, s.Email, s.Twitter, s.Facebook, s.Instagram, s.Pinterest)
 	if err != nil {
 		panic(err.Error())
