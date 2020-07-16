@@ -17,9 +17,9 @@
             <div class="content-column">
                 <div class="photo-reel">
                     <img class="myImages" id="myImg" src={{.Image}}>
-                    <img class="myImages" id="myImg" src="https://m.media-amazon.com/images/I/51f6xemth2L._SX260_.jpg">
-                    <img class="myImages" id="myImg" src="https://cdn.vox-cdn.com/thumbor/q-qb2g-XzWlGhjPTn9Uv9wwkaPs=/0x0:800x533/920x613/filters:focal(336x203:464x331):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/56133169/SaltandStraw_PChang_1117.0.jpg">
-                    <img class="myImages" id="myImg" src="https://ca-times.brightspotcdn.com/dims4/default/629b16b/2147483647/strip/true/crop/1500x843+0+0/resize/840x472!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fdd%2F95%2Ffbb6392b6957751532172b6d0abd%2Fsd-1545861472-clxxf0xgds-snap-image">
+                    <img class="myImages" id="myImg" src={{.Image_2}}>
+                    <img class="myImages" id="myImg" src={{.Image_3}}>
+                    <img class="myImages" id="myImg" src={{.Image_4}}>
                     <div id="myModal" class="modal">
                         <span class="close">&times;</span>
                         <img class="modal-content" id="img01">
@@ -44,7 +44,7 @@
                         <li>
                             <div class="icon-box">
                                 <i class="fa fa-envelope top-buffer" style='font-size:20px'></i></div>
-                            saltandstraw@saltandstraw.com
+                            {{.Email}}
                         </li>
                         <li>
                             <div class="icon-box">
@@ -53,10 +53,10 @@
                             {{.Phone}}
                         </li>
                     </ul>
-                    <a href="https://twitter.com/" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
-                    <a href="https://facebook.com" class="icon-button facebook"><i class="fab fa-facebook-f"></i><span></span></a>
-                    <a href="https://www.instagram.com/" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
-                    <a href="https://www.pinterest.com/" class="icon-button pinterest"><i class="fab fa-pinterest-p"></i><span></span></a>
+                    <a class="icon-button twitter" href={{.Twitter}}><i class="fab fa-twitter"></i><span></span></a>
+                    <a class="icon-button facebook" href={{.Facebook}}><i class="fab fa-facebook-f"></i><span></span></a>
+                    <a class="icon-button instagram" href={{.Instagram}}><i class="fab fa-instagram"></i><span></span></a>
+                    <a class="icon-button pinterest" href={{.Pinterest}}><i class="fab fa-pinterest-p"></i><span></span></a>
                 </div>
                 <div>
                     <img src={{.Logo}} class="mycircleimg" />
@@ -91,24 +91,14 @@
                         </div>
                         <div style="white-space: nowrap">
                             <ul style="list-style: none;">
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
-                                <li>5:30 am - 7:00 pm</li>
+                                {{range .Schedule}}
+                                <li>{{.StartTime}} - {{.EndTime}}{{end}}
                             </ul>
                         </div>
                         <div style="white-space: nowrap">
                             <ul style="list-style: none;">
-                                <li>Portland</li>
-                                <li>Los Angeles</li>
-                                <li>Los Angeles</li>
-                                <li>San Diego</li>
-                                <li>Santa Clara</li>
-                                <li>San Francisco</li>
-                                <li>San Francisco</li>
+                                {{range .Schedule}}
+                                <li>{{.Location}}{{end}}
                             </ul>
                         </div>
                     </div>
