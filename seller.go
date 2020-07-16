@@ -12,7 +12,7 @@ type sellerDB struct {
 
 type Seller struct {
 	Name      string
-	About	  string
+	About     string
 	Logo      string
 	Image     string
 	Image_2   string
