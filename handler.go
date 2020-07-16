@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/skip2/go-qrcode"
 	"html/template"
 	"net/http"
 	"strconv"
-	"github.com/skip2/go-qrcode"
 )
 
-const baseURL = "24cdf7b47d2d.ngrok.io"
+const baseURL = "c962c1bf4d9e.ngrok.io"
 
 func functionHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("insert landing page"))
@@ -34,12 +34,23 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 	queryString := r.URL.Query()
 	id := queryString.Get("id")
 	s := app.db.loadSeller(id)
+
+	fmt.Println("LOCATION:", s.Location)
+
+	lat, lng := getGeocoding(s.Location)
+
+	displayVars := &DisplayVars{
+		DisplaySeller: *s,
+		Lat:           lat,
+		Lng:           lng,
+	}
+
 	tmpl, err := template.ParseFiles("display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	err = tmpl.Execute(w, s)
+	err = tmpl.Execute(w, displayVars)
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -62,7 +73,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	currentSeller := Seller{
 		Name:     r.FormValue("Name"),
-		Logo:	  r.FormValue("Logo"),
+		Logo:     r.FormValue("Logo"),
 		Image:    r.FormValue("Image"),
 		Phone:    r.FormValue("Phone"),
 		Location: r.FormValue("Location"),
@@ -75,4 +86,10 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
 
 	http.Redirect(w, r, "/view/?id="+id_str, http.StatusFound)
+}
+
+type DisplayVars struct {
+	DisplaySeller Seller
+	Lat           float64
+	Lng           float64
 }

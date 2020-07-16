@@ -4,8 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strconv"
-
-	"github.com/kr/pretty"
 )
 
 type sellerDB struct {
@@ -71,10 +69,6 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	if err != nil {
 		return nil
 	}
-
-	address := "1455 Market St, San Francisco, CA 94103, USA"
-	lat, lng := getGeocoding(address)
-	pretty.Printf("Coordinates of location: %.7f, %.7f", lat, lng)
 
 	row := sDB.DB.QueryRow(`SELECT name, logo, image, phone, location FROM seller WHERE id=?`, n_id)
 	error := row.Scan(&name, &logo, &image, &phone, &location)
