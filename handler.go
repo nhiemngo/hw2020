@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"github.com/skip2/go-qrcode"
 	"html/template"
 	"net/http"
@@ -32,9 +31,8 @@ func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	id := vars["id"]
-
+	queryString := r.URL.Query()
+	id := queryString.Get("id")
 	s := app.db.loadSeller(id)
 	tmpl, err := template.ParseFiles("templates/display.html")
 	if err != nil {
@@ -50,9 +48,11 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
+
 	var ds []*DaySchedule
 
-	tmpl, err := template.ParseFiles("form_template.html")
+	tmpl, err := template.ParseFiles("templates/form.html")
+
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -150,8 +150,8 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	id := app.db.save(currentSeller)
 	id_str := strconv.Itoa(int(id))
 
-	link := fmt.Sprintf("https://%v/view/%v", baseURL, id_str)
+	link := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id_str)
 	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
 
-	http.Redirect(w, r, "/view/"+id_str, http.StatusFound)
+	http.Redirect(w, r, "/view/?id="+id_str, http.StatusFound)
 }

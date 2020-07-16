@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@400;700&family=Open+Sans&display=swap');
+/*
+<div class="img-grid">
+
+.img-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+*/
+
+* {
+    font-family: 'Hind Guntur', sans-serif;
+}
+
+h1 {
+    display: grid;
+    font-size: 48px;
+    font-weight: 900;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+h2 {
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+}
+
+p {
+    font-size: 15;
+    color: #858585;
+}
+
+.header-column {
+    display: grid;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-column {
+    display: grid;
+    max-width: 500px;
+    margin: 0 auto; /* centering */
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.logo-image {
+    margin: 0 auto;
+    padding-top: 20px;
+    height: 120px;
+}
+
+.input-box {
+    border-radius: 3px;
+    height:40px;
+    width: 400px;
+    background-color: #D8E1E9;
+    border-color: #D8E1E9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+
+    margin: 0 auto;
+}
+
+.about-box {
+    border-radius: 3px;
+    height:100px;
+    width: 400px;
+    background-color: #D8E1E9;
+    border-color: #D8E1E9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+
+    margin: 0 auto;
+}
+
+.address-box {
+    border-radius: 3px;
+    height:40px;
+    width: 400px;
+    background-color: #D8E1E9;
+    border-color: #D8E1E9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+
+    margin: 0 auto;
+
+}
+
+.submit-button {
+    font-size: 20px;
+    border-radius: 20px;
+    height:50px;
+    width: 400px;
+    background-color: #98C1D9;
+    border-color: #162E3B;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #162E3B;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+    color: #275068;
+    text-decoration: none;
+    cursor: pointer;
+    border-color: #275068;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.form-inline label {
+    margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+    vertical-align: middle;
+    height:40px;
+    width: 110px;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #D8E1E9;
+    border-color: #D8E1E9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+}
