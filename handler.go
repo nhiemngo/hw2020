@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/skip2/go-qrcode"
 	"html/template"
 	"net/http"
 	"strconv"
-	"github.com/skip2/go-qrcode"
 )
 
 const baseURL = "24cdf7b47d2d.ngrok.io"
@@ -48,7 +48,7 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("form.html")
+	tmpl, err := template.ParseFiles("templates/form.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -62,7 +62,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	currentSeller := Seller{
 		Name:     r.FormValue("Name"),
-		Logo:	  r.FormValue("Logo"),
+		Logo:     r.FormValue("Logo"),
 		Image:    r.FormValue("Image"),
 		Phone:    r.FormValue("Phone"),
 		Location: r.FormValue("Location"),

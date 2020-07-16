@@ -1,0 +1,226 @@
+<!-- forms.html -->
+<html>
+<head>
+    <title>Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/form_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Guntur&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{{if .Success}}
+    <h1>Thanks for your message!</h1>
+{{else}}
+    <div class="section">
+        <div class="header-column">
+            <img class="logo-image" src="https://iff08xfn21-flywheel.netdna-ssl.com/wp-content/uploads/2017/08/SquarePOS_logo.jpg">
+            <h1>Micro Business Site Creator</h1>
+        </div>
+    </div>
+
+        <form method="POST">
+
+            <div class="section">
+                <div class="content-column">
+                    <h2>Basic Information</h2>
+
+                    <label>Name of Business:</label>
+                    <input class="input-box" type="text" name="Name" placeholder="e.g. Square Inc."><br>
+
+                    <label>Permanent City (City, State)::</label>
+                    <input class="input-box" type="text" name="Location" placeholder="e.g. San Francisco, CA"><br>
+
+                    <label for="email">Business Email Address:</label>
+                    <input class="input-box" type="text" name="Email" placeholder="e.g. smallbusiness@gmail.com"><br>
+
+                    <label>Phone Number:</label>
+                    <input class="input-box" type="text" name="Phone" placeholder="e.g. (555)-555-5555"><br>
+
+                    <label>Link to Logo Image:</label>
+                    <input class="input-box" type="text" name="Logo" placeholder="Logo Link"><br>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-column">
+                    <h2>Social Media</h2>
+
+                    <label>Twitter:</label>
+                    <input class="input-box" type="text" name="twitter" placeholder="Your Twitter Link"><br>
+
+                    <label>Facebook:</label>
+                    <input class="input-box" type="text" name="facebook" placeholder="Your Facebook Link"><br>
+
+                    <label>Instagram:</label>
+                    <input class="input-box" type="text" name="insta" placeholder="Your Instagram Link"><br>
+
+                    <label>Pinterest:</label>
+                    <input class="input-box" type="text" name="pinterest" placeholder="Your Pinterest Link"><br><br>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-column">
+                    <h2>More Information</h2>
+
+                    <label>Description of Business:</label>
+                    <input class="about-box" type="text" name="about" placeholder="Write a description of your business to let your customers know what you're about!"><br><br>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-column">
+                    <h2>Hours</h2>
+
+                    <p>
+                        Please format start and end times in the following manner: ##:## XX (e.g. 01:30 PM).
+                    </p>
+
+                    <div class="form-inline">
+                        <label>Monday:</label>
+                        <input placeholder="Start Time" name="monday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="monday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Tuesday:</label>
+                        <input placeholder="Start Time" name="tuesday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="tuesday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Wednesday:</label>
+                        <input placeholder="Start Time" name="wednesday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="wednesday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Thursday:</label>
+                        <input placeholder="Start Time" name="thursday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="thursday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Friday:</label>
+                        <input placeholder="Start Time" name="friday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="friday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Saturday:</label>
+                        <input placeholder="Start Time" name="saturday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="saturday_end">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Sunday:</label>
+                        <input placeholder="Start Time" name="sunday_start">
+                        <span style="margin-right:10px">to</span>
+                        <input placeholder="End Time" name="sunday_end">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-column">
+                    <h2> Locations</h2>
+
+                    <p>
+                        The name of location refers to how you wish to describe the location (e.g. Westwood Farmers Market).<br><br>
+                        Please format the full address in the following manner: Street Address, City, State, Zip Code (e.g. 1036 Broxton Ave, Los Angeles, CA, 90024).
+                    </p>
+
+                    <div class="form-inline">
+                        <label>Monday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="monday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="monday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Tuesday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="tuesday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="tuesday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Wednesday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="wednesday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="wednesday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Thursday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="thursday_location">
+                    </div>
+                    <div>
+                        <input class="address-box"  placeholder="Full Address" name="thursday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Friday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="friday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="friday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Saturday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="saturday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="saturday_address">
+                    </div>
+
+                    <div class="form-inline">
+                        <label>Sunday:</label>
+                        <input style="width:200px" placeholder="Name of Location" name="sunday_location">
+                    </div>
+                    <div>
+                        <input class="address-box" placeholder="Full Address" name="sunday_address">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="content-column">
+                    <h2>Photos</h2>
+
+                    <label>Photo 1 Link:</label>
+                    <input class="input-box" type="text" name="Image"><br>
+
+                    <label>Photo 2 Link:</label>
+                    <input class="input-box" type="text" name="p2"><br>
+
+                    <label>Photo 3 Link:</label>
+                    <input class="input-box" type="text" name="p3"><br>
+
+                    <label>Photo 4 Link:</label>
+                    <input class="input-box" type="text" name="p4"><br>
+
+                    <input class="submit-button" type="submit" value="Create Platform">
+                </div>
+            </div>
+
+        </form>
+
+
+{{end}}
+</body>
+
+</html>
+

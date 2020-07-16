@@ -20,22 +20,23 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	mux := http.NewServeMux()
+	//mux := http.NewServeMux()
 
 	app := application{
 		&sellerDB{
 			DB: db,
 		},
 	}
-	mux.HandleFunc("/", functionHandler)
-	fs := http.FileServer(http.Dir("templates"))
-	http.Handle("/css/", fs)
-	mux.HandleFunc("/view/", app.viewHandler)
-	mux.HandleFunc("/testseller/", viewTestSellerHandler)
-	mux.HandleFunc("/create/", app.createHandler)
-	mux.HandleFunc("/login/", login)
-	mux.HandleFunc("/logout/", logout)
-	mux.HandleFunc("/secret/", secret)
 
-	http.ListenAndServe(":2000", mux)
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("templates/css"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("templates/js"))))
+	http.HandleFunc("/", functionHandler)
+	http.HandleFunc("/view/", app.viewHandler)
+	http.HandleFunc("/testseller/", viewTestSellerHandler)
+	http.HandleFunc("/create/", app.createHandler)
+	http.HandleFunc("/login/", login)
+	http.HandleFunc("/logout/", logout)
+	http.HandleFunc("/secret/", secret)
+
+	http.ListenAndServe(":2000", nil)
 }

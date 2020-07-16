@@ -14,6 +14,10 @@
     font-family: Poppins;
 }
 
+.body {
+    background-color: green;
+}
+
 .photo-reel {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
