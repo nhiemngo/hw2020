@@ -26,17 +26,19 @@
                 <div class="content-column">
                     <h2>Basic Information</h2>
 
-                    <label>Name of Business:</label>
-                    <input class="input-box" type="text" name="Name" placeholder="e.g. Square Inc."><br>
+                    <div class="input-row">
+                        <label>Name of Business:</label>
+                        <input class="input-box" type="text" name="Name" placeholder="Square Inc.">
+                    </div>
 
-                    <label>Permanent City (City, State)::</label>
-                    <input class="input-box" type="text" name="Location" placeholder="e.g. San Francisco, CA"><br>
+                    <label>Permanent City (City, State):</label>
+                    <input class="input-box" type="text" name="Location" placeholder="San Francisco, CA"><br>
 
                     <label for="email">Business Email Address:</label>
-                    <input class="input-box" type="text" name="Email" placeholder="e.g. smallbusiness@gmail.com"><br>
+                    <input class="input-box" type="text" name="Email" placeholder="smallbusiness@gmail.com"><br>
 
                     <label>Phone Number:</label>
-                    <input class="input-box" type="text" name="Phone" placeholder="e.g. (555)-555-5555"><br>
+                    <input class="input-box" type="text" name="Phone" placeholder="(555)-555-5555"><br>
 
                     <label>Link to Logo Image:</label>
                     <input class="input-box" type="text" name="Logo" placeholder="Logo Link"><br>
@@ -64,9 +66,8 @@
             <div class="section">
                 <div class="content-column">
                     <h2>More Information</h2>
-
                     <label>Description of Business:</label>
-                    <input class="about-box" type="text" name="About" placeholder="Write a description of your business to let your customers know what you're about!"><br><br>
+                    <textarea class="textarea" name="About" placeholder="Write a description of your business to let your customers know what you're about!"></textarea><br><br>
                 </div>
             </div>
 
@@ -80,51 +81,65 @@
 
                     <div class="form-inline">
                         <label>Monday:</label>
-                        <input placeholder="Start Time" name="MonStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="MonEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="MonStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="MonEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Tuesday:</label>
-                        <input placeholder="Start Time" name="TueStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="TueEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="TueStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="TueEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Wednesday:</label>
-                        <input placeholder="Start Time" name="WedStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="WedEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="WedStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="WedEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Thursday:</label>
-                        <input placeholder="Start Time" name="ThuStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="ThuEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="ThuStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="ThuEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Friday:</label>
-                        <input placeholder="Start Time" name="FriStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="FriEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="FriStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="FriEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Saturday:</label>
-                        <input placeholder="Start Time" name="SatStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="SatEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="SatStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="SatEndTime">
+                        </div>
                     </div>
 
                     <div class="form-inline">
                         <label>Sunday:</label>
-                        <input placeholder="Start Time" name="SunStartTime">
-                        <span style="margin-right:10px">to</span>
-                        <input placeholder="End Time" name="SunEndTime">
+                        <div class="form-inline">
+                            <input placeholder="Start Time" name="SunStartTime">
+                            <span>to</span>
+                            <input placeholder="End Time" name="SunEndTime">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,61 +153,65 @@
                         Please format the full address in the following manner: Street Address, City, State, Zip Code (e.g. 1036 Broxton Ave, Los Angeles, CA, 90024).
                     </p>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Monday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="MonLocation">
-                    </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="monday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="MonLocation">
+                            <textarea placeholder="Full Address" name="monday_address"></textarea>
+                        </div>
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Tuesday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="TueLocation">
-                    </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="tuesday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="TueLocation">
+                            <textarea placeholder="Full Address" name="tuesday_address"></textarea>
+                        </div>
+
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Wednesday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="WedLocation">
-                    </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="wednesday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="WedLocation">
+                            <textarea placeholder="Full Address" name="wednesday_address"></textarea>
+                        </div>
+
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Thursday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="ThuLocation">
-                    </div>
-                    <div>
-                        <input class="address-box"  placeholder="Full Address" name="thursday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="ThuLocation">
+                            <textarea  placeholder="Full Address" name="thursday_address"></textarea>
+                        </div>
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Friday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="FriLocation">
-                    </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="friday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="FriLocation">
+                            <textarea placeholder="Full Address" name="friday_address"></textarea>
+                        </div>
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Saturday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="SatLocation">
-                    </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="saturday_address">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="SatLocation">
+                            <textarea placeholder="Full Address" name="saturday_address"></textarea>
+                        </div>
+
                     </div>
 
-                    <div class="form-inline">
+                    <div class="location-row">
                         <label>Sunday:</label>
-                        <input style="width:200px" placeholder="Name of Location" name="SunLocation">
+                        <div>
+                            <input class="location-input" placeholder="Name of Location" name="SunLocation">
+                            <textarea placeholder="Full Address" name="sunday_address"></textarea>
+                        </div>
                     </div>
-                    <div>
-                        <input class="address-box" placeholder="Full Address" name="sunday_address">
-                    </div>
+
                 </div>
             </div>
 

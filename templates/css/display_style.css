@@ -259,6 +259,11 @@ ul {
 }
 
 /* Icons */
+.icon {
+    position: relative;
+    z-index: 0;
+}
+
 .icon-button i {
     background: none;
     color: white;

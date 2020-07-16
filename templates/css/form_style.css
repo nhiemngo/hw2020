@@ -13,6 +13,10 @@
     font-family: 'Hind Guntur', sans-serif;
 }
 
+.input-row {
+    margin-bottom: 24px;
+}
+
 h1 {
     display: grid;
     font-size: 48px;
@@ -24,6 +28,7 @@ h1 {
 
 h2 {
     padding-bottom: 20px;
+    font-weight: 600;
     margin: 0 auto;
 }
 
@@ -34,6 +39,10 @@ form {
 p {
     font-size: 15;
     color: #858585;
+}
+
+.section {
+    margin-bottom: 20px;
 }
 
 .header-column {
@@ -56,28 +65,27 @@ p {
     height: 120px;
 }
 
-.input-box {
-    border-radius: 3px;
-    height:40px;
-    width: 400px;
-    background-color: #D8E1E9;
-    border-color: #D8E1E9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
-
-    margin: 0 auto;
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-.about-box {
-    border-radius: 3px;
-    height:100px;
-    width: 400px;
-    background-color: #D8E1E9;
-    border-color: #D8E1E9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
+input,
+textarea{
+    border-radius: 8px;
+    width: 100%;
+    border: 2px solid #ddd;
+    padding: 12px;
+    font-size: 18px;
+}
 
-    margin: 0 auto;
+input:hover,
+textarea:hover{
+    border-color: #999;
+}
+
+textarea {
+    height: 120px;
 }
 
 .address-box {
@@ -97,7 +105,7 @@ p {
     font-size: 20px;
     border-radius: 20px;
     height:50px;
-    width: 400px;
+    width: 100%;
     background-color: #98C1D9;
     border-color: #162E3B;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -117,23 +125,34 @@ p {
 
 .form-inline {
     display: flex;
-    flex-flow: row wrap;
     align-items: center;
-}
-
-.form-inline label {
-    margin: 5px 10px 5px 0;
+    margin-bottom: 8px;
 }
 
 .form-inline input {
-    vertical-align: middle;
-    height:40px;
-    width: 110px;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    border-radius: 3px;
-    background-color: #D8E1E9;
-    border-color: #D8E1E9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
+    width: 100px;
 }
+
+.form-inline span {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.form-inline label {
+    flex: 0 0 120px;
+    text-align: left;
+}
+
+.location-row {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.location-row label {
+    flex-basis: 120px;
+}
+
+.location-input {
+    margin-bottom: var(--input-margin);
+}
+
