@@ -131,6 +131,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	currentSeller := Seller{
 		Name:      r.FormValue("Name"),
+		About:	   r.FormValue("About"),
 		Logo:      r.FormValue("Logo"),
 		Image:     r.FormValue("Image"),
 		Image_2:   r.FormValue("Image_2"),

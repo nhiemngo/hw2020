@@ -1,4 +1,5 @@
 INSERT INTO seller (name,
+                    about,
                     logo,
                     second_image,
                     third_image,
@@ -13,6 +14,7 @@ INSERT INTO seller (name,
                     pinterest)
 VALUES (
     'name',
+    'about',
     'logo',
     'second_image',
     'third_image',
@@ -27,17 +29,6 @@ VALUES (
     'pinterest'
 );
 
-second_image,
-third_image,
-fourth_image,
-fifth_image,
-phone,
-location,
-email,
-twitter,
-facebook,
-instagram,
-pinterest,
 
 INSERT INTO schedule (monday,
                       tuesday,
@@ -113,6 +104,7 @@ VALUES (
 );
 
 INSERT INTO seller (name,
+                    about,
                     logo,
                     second_image,
                     third_image,
@@ -127,6 +119,7 @@ INSERT INTO seller (name,
                     pinterest)
 VALUES (
            'name2',
+           'about2',
            'logo2',
            'second_image2',
            'third_image2',
