@@ -316,7 +316,6 @@ func (sDB *sellerDB) save(s Seller) int64 {
 		second_image,
 		third_image,
 		fourth_image,
-		fifth_image,
 		phone,
 		location,
 		email,
@@ -340,9 +339,10 @@ func (sDB *sellerDB) save(s Seller) int64 {
 		?,
 		?,
 		?
-	);`, s.Name, s.About, s.Logo, s.Image, s.Image_2, s.Image_3, s.Image_4, s.Image_5,
+	);`, s.Name, s.About, s.Logo, s.Image, s.Image_2, s.Image_3, s.Image_4,
 		s.Phone, s.Location, s.Email, s.Twitter, s.Facebook, s.Instagram, s.Pinterest)
 	if err != nil {
+
 		panic(err.Error())
 	}
 	defer insert.Close()
