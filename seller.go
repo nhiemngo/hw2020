@@ -12,7 +12,7 @@ type sellerDB struct {
 
 type Seller struct {
 	Name      string
-	About	  string
+	About     string
 	Logo      string
 	Image     string
 	Image_2   string
@@ -289,7 +289,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	}
 	return &Seller{
 		Name:      name,
-		About:	   about,
+		About:     about,
 		Logo:      logo,
 		Image:     image,
 		Image_2:   image_2,
