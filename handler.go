@@ -52,7 +52,7 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	var ds []*DaySchedule
 
-	tmpl, err := template.ParseFiles("form.html")
+	tmpl, err := template.ParseFiles("form_template.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -76,7 +76,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Tuesday",
 		OpenStatus: r.FormValue("TueOpenStatus"),
 		Location:   r.FormValue("TueLocation"),
-		Address: 	r.FormValue("TueAddress"),
+		Address:    r.FormValue("TueAddress"),
 		StartTime:  r.FormValue("TueStartTime"),
 		EndTime:    r.FormValue("TueEndTime"),
 	}
@@ -84,7 +84,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Wednesday",
 		OpenStatus: r.FormValue("WedOpenStatus"),
 		Location:   r.FormValue("WedLocation"),
-		Address: 	r.FormValue("WedAddress"),
+		Address:    r.FormValue("WedAddress"),
 		StartTime:  r.FormValue("WedStartTime"),
 		EndTime:    r.FormValue("WedEndTime"),
 	}
@@ -92,7 +92,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Thursday",
 		OpenStatus: r.FormValue("ThuOpenStatus"),
 		Location:   r.FormValue("ThuLocation"),
-		Address: 	r.FormValue("ThuAddress"),
+		Address:    r.FormValue("ThuAddress"),
 		StartTime:  r.FormValue("ThuStartTime"),
 		EndTime:    r.FormValue("ThuEndTime"),
 	}
@@ -100,7 +100,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Friday",
 		OpenStatus: r.FormValue("FriOpenStatus"),
 		Location:   r.FormValue("FriLocation"),
-		Address: 	r.FormValue("FriAddress"),
+		Address:    r.FormValue("FriAddress"),
 		StartTime:  r.FormValue("FriStartTime"),
 		EndTime:    r.FormValue("FriEndTime"),
 	}
@@ -108,7 +108,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Saturday",
 		OpenStatus: r.FormValue("SatOpenStatus"),
 		Location:   r.FormValue("SatLocation"),
-		Address: 	r.FormValue("SatAddress"),
+		Address:    r.FormValue("SatAddress"),
 		StartTime:  r.FormValue("SatStartTime"),
 		EndTime:    r.FormValue("SatEndTime"),
 	}
@@ -116,7 +116,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 		Date:       "Sunday",
 		OpenStatus: r.FormValue("SunOpenStatus"),
 		Location:   r.FormValue("SunLocation"),
-		Address: 	r.FormValue("SunAddress"),
+		Address:    r.FormValue("SunAddress"),
 		StartTime:  r.FormValue("SunStartTime"),
 		EndTime:    r.FormValue("SunEndTime"),
 	}
@@ -129,23 +129,22 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	ds = append(ds, saturdaySched)
 	ds = append(ds, sundaySched)
 
-
 	currentSeller := Seller{
-		Name:     r.FormValue("Name"),
-		Logo:     r.FormValue("Logo"),
-		Image:    r.FormValue("Image"),
-		Image_2:  r.FormValue("Image_2"),
-		Image_3:  r.FormValue("Image_3"),
-		Image_4:  r.FormValue("Image_4"),
-		Image_5:  r.FormValue("Image_5"),
-		Phone:    r.FormValue("Phone"),
-		Location: r.FormValue("Location"),
-		Email:    r.FormValue("Email"),
-		Twitter:  r.FormValue("Twitter"),
-		Facebook: r.FormValue("Facebook"),
+		Name:      r.FormValue("Name"),
+		Logo:      r.FormValue("Logo"),
+		Image:     r.FormValue("Image"),
+		Image_2:   r.FormValue("Image_2"),
+		Image_3:   r.FormValue("Image_3"),
+		Image_4:   r.FormValue("Image_4"),
+		Image_5:   r.FormValue("Image_5"),
+		Phone:     r.FormValue("Phone"),
+		Location:  r.FormValue("Location"),
+		Email:     r.FormValue("Email"),
+		Twitter:   r.FormValue("Twitter"),
+		Facebook:  r.FormValue("Facebook"),
 		Instagram: r.FormValue("Instagram"),
 		Pinterest: r.FormValue("Pinterest"),
-		Schedule: ds,
+		Schedule:  ds,
 	}
 
 	id := app.db.save(currentSeller)

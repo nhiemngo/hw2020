@@ -11,21 +11,21 @@ type sellerDB struct {
 }
 
 type Seller struct {
-	Name     string
-	Logo     string
-	Image    string
-	Image_2  string
-	Image_3  string
-	Image_4  string
-	Image_5  string
-	Phone    string
-	Location string // can be used for map. or DaySchedule.Address can be used instead if we want to do multiple locations
-	Email	 string
-	Twitter	 string
-	Facebook string
+	Name      string
+	Logo      string
+	Image     string
+	Image_2   string
+	Image_3   string
+	Image_4   string
+	Image_5   string
+	Phone     string
+	Location  string // can be used for map. or DaySchedule.Address can be used instead if we want to do multiple locations
+	Email     string
+	Twitter   string
+	Facebook  string
 	Instagram string
 	Pinterest string
-	Schedule []*DaySchedule
+	Schedule  []*DaySchedule
 }
 
 type DaySchedule struct {
@@ -203,10 +203,9 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 		return nil
 	}
 
-
 	monSched := &DaySchedule{
 		Date:      "mon",
-		Location:	mon_location,
+		Location:  mon_location,
 		Address:   mon_address,
 		StartTime: mon_start,
 		EndTime:   mon_end,
@@ -214,7 +213,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 
 	tueSched := &DaySchedule{
 		Date:      "tue",
-		Location:	tue_location,
+		Location:  tue_location,
 		Address:   tue_address,
 		StartTime: tue_start,
 		EndTime:   tue_end,
@@ -222,7 +221,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 
 	wedSched := &DaySchedule{
 		Date:      "wed",
-		Location:	wed_location,
+		Location:  wed_location,
 		Address:   wed_address,
 		StartTime: wed_start,
 		EndTime:   wed_end,
@@ -230,7 +229,7 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 
 	thuSched := &DaySchedule{
 		Date:      "thu",
-		Location:	thu_location,
+		Location:  thu_location,
 		Address:   thu_address,
 		StartTime: thu_start,
 		EndTime:   thu_end,
@@ -238,21 +237,21 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 
 	friSched := &DaySchedule{
 		Date:      "fri",
-		Location:	fri_location,
+		Location:  fri_location,
 		Address:   fri_address,
 		StartTime: fri_start,
 		EndTime:   fri_end,
 	}
 	satSched := &DaySchedule{
 		Date:      "sat",
-		Location:	sat_location,
+		Location:  sat_location,
 		Address:   sat_address,
 		StartTime: sat_start,
 		EndTime:   sat_end,
 	}
 	sunSched := &DaySchedule{
 		Date:      "sun",
-		Location:	sun_location,
+		Location:  sun_location,
 		Address:   sun_address,
 		StartTime: sun_start,
 		EndTime:   sun_end,
@@ -281,26 +280,26 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 									instagram,
 									pinterest FROM seller WHERE id=?`, n_id)
 	error = row.Scan(&name, &logo, &image, &image_2, &image_3, &image_4, &image_5, &phone, &location,
-					&email, &twitter, &facebook, &instagram, &pinterest)
+		&email, &twitter, &facebook, &instagram, &pinterest)
 	if error != nil {
 		return nil
 	}
 	return &Seller{
-		Name:     name,
-		Logo:     logo,
-		Image:    image,
-		Image_2:  image_2,
-		Image_3:  image_3,
-		Image_4:  image_4,
-		Image_5:  image_5,
-		Phone:    phone,
-		Location: location,
-		Email:	  email,
-		Twitter:  twitter,
-		Facebook: facebook,
+		Name:      name,
+		Logo:      logo,
+		Image:     image,
+		Image_2:   image_2,
+		Image_3:   image_3,
+		Image_4:   image_4,
+		Image_5:   image_5,
+		Phone:     phone,
+		Location:  location,
+		Email:     email,
+		Twitter:   twitter,
+		Facebook:  facebook,
 		Instagram: instagram,
 		Pinterest: pinterest,
-		Schedule: ds,
+		Schedule:  ds,
 	}
 }
 
@@ -343,13 +342,13 @@ func (sDB *sellerDB) save(s Seller) int64 {
 	}
 	defer insert.Close()
 
-	monbool,_ := strconv.ParseBool(s.Schedule[0].OpenStatus)
-	tuebool,_ := strconv.ParseBool(s.Schedule[1].OpenStatus)
-	wedbool,_ := strconv.ParseBool(s.Schedule[2].OpenStatus)
-	thubool,_ := strconv.ParseBool(s.Schedule[3].OpenStatus)
-	fribool,_ := strconv.ParseBool(s.Schedule[4].OpenStatus)
-	satbool,_ := strconv.ParseBool(s.Schedule[5].OpenStatus)
-	sunbool,_ := strconv.ParseBool(s.Schedule[6].OpenStatus)
+	monbool, _ := strconv.ParseBool(s.Schedule[0].OpenStatus)
+	tuebool, _ := strconv.ParseBool(s.Schedule[1].OpenStatus)
+	wedbool, _ := strconv.ParseBool(s.Schedule[2].OpenStatus)
+	thubool, _ := strconv.ParseBool(s.Schedule[3].OpenStatus)
+	fribool, _ := strconv.ParseBool(s.Schedule[4].OpenStatus)
+	satbool, _ := strconv.ParseBool(s.Schedule[5].OpenStatus)
+	sunbool, _ := strconv.ParseBool(s.Schedule[6].OpenStatus)
 
 	res, err := sDB.DB.Exec(`INSERT INTO schedule (
 		monday,
@@ -425,7 +424,7 @@ func (sDB *sellerDB) save(s Seller) int64 {
 		?
 	);`, monbool, tuebool, wedbool, thubool, fribool, satbool, sunbool, s.Schedule[0].StartTime, s.Schedule[1].StartTime, s.Schedule[2].StartTime, s.Schedule[3].StartTime,
 		s.Schedule[4].StartTime, s.Schedule[5].StartTime, s.Schedule[6].StartTime, s.Schedule[0].EndTime, s.Schedule[1].EndTime, s.Schedule[2].EndTime,
-		s.Schedule[3].EndTime, s.Schedule[4].EndTime, s.Schedule[5].EndTime, s.Schedule[6].EndTime,s.Schedule[0].Location, s.Schedule[1].Location,
+		s.Schedule[3].EndTime, s.Schedule[4].EndTime, s.Schedule[5].EndTime, s.Schedule[6].EndTime, s.Schedule[0].Location, s.Schedule[1].Location,
 		s.Schedule[2].Location, s.Schedule[3].Location, s.Schedule[4].Location, s.Schedule[5].Location, s.Schedule[6].Location, s.Schedule[0].Address, s.Schedule[1].Address,
 		s.Schedule[2].Address, s.Schedule[3].Address, s.Schedule[4].Address, s.Schedule[5].Address, s.Schedule[6].Address)
 	if err != nil {
