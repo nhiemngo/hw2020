@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@400;700&family=Open+Sans&display=swap');
+
+* {
+  font-family: 'Hind Guntur', sans-serif;
+}
+
+body {
+  background-image: url(https://ribook.org/wp-content/uploads/2019/01/light-blue-background.jpg);
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 900;
+  margin: 0 auto;
+  color: black;
+  padding-bottom: 30px;
+  color: #3C4146;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 0 auto;
+  color: #3C4146;
+}
+
+
+.content-column {
+	display: grid;
+  margin: 0 auto; /* centering */
+  padding: 40px;
+  width: 75%;
+  background-color: #F5F9FC;
+  height: 600px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.subcolumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 30px;
+  padding-right: 50px;
+}
+
+.logo-image {
+  display: block;
+  margin: 0 auto;
+  height: 65px;
+  padding-bottom: 30px;
+}
+
+.qrimage {
+  height:300px;
+  padding-right: 50px;
+}
+
+.button-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 10px;
+}
+
+.input-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 1px;
+  border: 1px solid #ddd;
+  margin-right: 3px;
+}
+
+.button-attributes {
+  background-color: #49A6D4;
+  color: white;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.button-attributes:hover,
+.button-attributes:focus {
+  background-color: #46494C;
+  cursor: pointer;
+  border-color: #275068;
+}

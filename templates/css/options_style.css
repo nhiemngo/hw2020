@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@400;700&family=Open+Sans&display=swap');
+
+* {
+  font-family: 'Hind Guntur', sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 auto;
+  position: relative;
+  top: 30%;
+  color: black;
+}
+
+h2 {
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0 auto;
+  position: relative;
+  top: 30%;
+  color: black;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 auto;
+  position: relative;
+  color: black;
+}
+
+body {
+
+	background-image: url(https://cfcdn.streetfightmag.com/wp-content/uploads/3022182-poster-cafe-overhead.png);
+}
+
+.logo {
+	margin-top: 40px;
+	height:50px;
+}
+
+.left-wrapper {
+	position: relative;
+	top: 10%;
+}
+
+.line-button-container {
+	margin-bottom: 100px;
+}
+
+.button-attributes {
+	font-weight: 550;
+	background-color: black;
+	border-color: #2D969F;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	color: white;
+	padding: 12px 30px;
+	text-align: center;
+	font-size: 20px;
+	cursor: pointer;
+	position: relative;
+	height: 50px;
+	margin-top: 10px;
+}
+
+.button-attributes:hover,
+.button-attributes:focus {
+  background-color: #666666;
+  cursor: pointer;
+  border-color: #275068;
+}
+
+.content-column {
+	display: grid;
+  grid-template-columns: 3fr 5fr;
+  margin: 0 auto; /* centering */
+  padding: 40px;
+}
+
+.column-item-left {
+  background-color: black;
+  opacity: 0.7;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 800px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.column-item-right {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 800px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+
+}
