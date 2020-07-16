@@ -67,7 +67,6 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	mondaySched := &DaySchedule{
 		Date:       "Monday",
 		OpenStatus: r.FormValue("MonOpenStatus"),
-		Location:   r.FormValue("MonLocation"),
 		Address:    r.FormValue("MonAddress"),
 		StartTime:  r.FormValue("MonStartTime"),
 		EndTime:    r.FormValue("MonEndTime"),
@@ -75,48 +74,42 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	tuesdaySched := &DaySchedule{
 		Date:       "Tuesday",
 		OpenStatus: r.FormValue("TueOpenStatus"),
-		Location:   r.FormValue("TueLocation"),
-		Address:    r.FormValue("TueAddress"),
+		Address: 	r.FormValue("TueAddress"),
 		StartTime:  r.FormValue("TueStartTime"),
 		EndTime:    r.FormValue("TueEndTime"),
 	}
 	wednesdaySched := &DaySchedule{
 		Date:       "Wednesday",
 		OpenStatus: r.FormValue("WedOpenStatus"),
-		Location:   r.FormValue("WedLocation"),
-		Address:    r.FormValue("WedAddress"),
+		Address: 	r.FormValue("WedAddress"),
 		StartTime:  r.FormValue("WedStartTime"),
 		EndTime:    r.FormValue("WedEndTime"),
 	}
 	thursdaySched := &DaySchedule{
 		Date:       "Thursday",
 		OpenStatus: r.FormValue("ThuOpenStatus"),
-		Location:   r.FormValue("ThuLocation"),
-		Address:    r.FormValue("ThuAddress"),
+		Address: 	r.FormValue("ThuAddress"),
 		StartTime:  r.FormValue("ThuStartTime"),
 		EndTime:    r.FormValue("ThuEndTime"),
 	}
 	fridaySched := &DaySchedule{
 		Date:       "Friday",
 		OpenStatus: r.FormValue("FriOpenStatus"),
-		Location:   r.FormValue("FriLocation"),
-		Address:    r.FormValue("FriAddress"),
+		Address: 	r.FormValue("FriAddress"),
 		StartTime:  r.FormValue("FriStartTime"),
 		EndTime:    r.FormValue("FriEndTime"),
 	}
 	saturdaySched := &DaySchedule{
 		Date:       "Saturday",
 		OpenStatus: r.FormValue("SatOpenStatus"),
-		Location:   r.FormValue("SatLocation"),
-		Address:    r.FormValue("SatAddress"),
+		Address: 	r.FormValue("SatAddress"),
 		StartTime:  r.FormValue("SatStartTime"),
 		EndTime:    r.FormValue("SatEndTime"),
 	}
 	sundaySched := &DaySchedule{
 		Date:       "Sunday",
 		OpenStatus: r.FormValue("SunOpenStatus"),
-		Location:   r.FormValue("SunLocation"),
-		Address:    r.FormValue("SunAddress"),
+		Address: 	r.FormValue("SunAddress"),
 		StartTime:  r.FormValue("SunStartTime"),
 		EndTime:    r.FormValue("SunEndTime"),
 	}

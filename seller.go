@@ -86,7 +86,6 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var facebook string
 	var instagram string
 	var pinterest string
-	var ds []*DaySchedule
 
 	var mon_status bool
 	var mon_location string
@@ -129,6 +128,9 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var sun_address string
 	var sun_start string
 	var sun_end string
+
+	var ds []*DaySchedule
+
 
 	n_id, err := strconv.Atoi(id)
 	if err != nil {
@@ -433,6 +435,7 @@ func (sDB *sellerDB) save(s Seller) int64 {
 		s.Schedule[3].EndTime, s.Schedule[4].EndTime, s.Schedule[5].EndTime, s.Schedule[6].EndTime, s.Schedule[0].Location, s.Schedule[1].Location,
 		s.Schedule[2].Location, s.Schedule[3].Location, s.Schedule[4].Location, s.Schedule[5].Location, s.Schedule[6].Location, s.Schedule[0].Address, s.Schedule[1].Address,
 		s.Schedule[2].Address, s.Schedule[3].Address, s.Schedule[4].Address, s.Schedule[5].Address, s.Schedule[6].Address)
+
 	if err != nil {
 		println("Exec err:", err.Error())
 	} else {
