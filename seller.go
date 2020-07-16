@@ -78,7 +78,6 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	var image_2 string
 	var image_3 string
 	var image_4 string
-	var image_5 string
 	var phone string
 	var location string
 	var email string
@@ -268,13 +267,12 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 	ds = append(ds, sunSched)
 
 	row = sDB.DB.QueryRow(`SELECT name, 
-									about
+									about,
 									logo, 
 									image, 
 									second_image, 
 									third_image,
 									fourth_image,
-									fifth_image,
 									phone, 
 									location,
 									email,
@@ -282,9 +280,10 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 									facebook,
 									instagram,
 									pinterest FROM seller WHERE id=?`, n_id)
-	error = row.Scan(&name, &about, &logo, &image, &image_2, &image_3, &image_4, &image_5, &phone, &location,
+	error = row.Scan(&name, &about, &logo, &image, &image_2, &image_3, &image_4, &phone, &location,
 		&email, &twitter, &facebook, &instagram, &pinterest)
 	if error != nil {
+		print("oh no")
 		return nil
 	}
 	return &Seller{
@@ -295,7 +294,6 @@ func (sDB *sellerDB) loadSeller(id string) *Seller {
 		Image_2:   image_2,
 		Image_3:   image_3,
 		Image_4:   image_4,
-		Image_5:   image_5,
 		Phone:     phone,
 		Location:  location,
 		Email:     email,
