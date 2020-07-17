@@ -30,6 +30,8 @@ func main() {
 
 	rt := mux.NewRouter()
 
+	rt.PathPrefix("/qr_codes/").Handler(http.StripPrefix("/qr_codes/", http.FileServer(http.Dir("templates/qr_codes"))))
+
 	rt.PathPrefix("/css/").Handler(http.StripPrefix("/css/", http.FileServer(http.Dir("templates/css"))))
 	rt.PathPrefix("/js/").Handler(http.StripPrefix("/js/", http.FileServer(http.Dir("templates/js"))))
 

@@ -163,7 +163,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 
 	idStr := strconv.Itoa(int(id))
 	link := fmt.Sprintf("http://%v/view/%v/", baseURL, idStr)
-	qrcode.WriteFile(link, qrcode.Medium, 256, idStr+"_qr.png")
+	qrcode.WriteFile(link, qrcode.Medium, 320, "templates/qr_codes/"+idStr+"_qr.png")
 
 	http.Redirect(w, r, "/option/"+idStr, http.StatusFound)
 }
@@ -196,11 +196,17 @@ func optionHandler(w http.ResponseWriter, r *http.Request) {
 
 func orderHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("templates/qrcode.html")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	qrcode_path := fmt.Sprintf("/qr_codes/%v_qr.png", id)
+	fmt.Println(qrcode_path)
+
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	err = tmpl.Execute(w, nil)
+	err = tmpl.Execute(w, qrcode_path)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
