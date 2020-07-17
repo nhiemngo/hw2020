@@ -39,11 +39,21 @@ func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
 	queryString := r.URL.Query()
 	id := queryString.Get("id")
 	s := app.db.loadSeller(id)
+
+	address := s.Location
+
+	lat, lng := getGeocoding(address)
+	s.Latitude = lat
+	s.Longitude = lng
+
+	fmt.Printf("LOCATION: %f, %f", s.Latitude, s.Longitude)
+
 	tmpl, err := template.ParseFiles("templates/display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
 	err = tmpl.Execute(w, s)
 	if err != nil {
 		fmt.Println(err)

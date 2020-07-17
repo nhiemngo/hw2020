@@ -26,6 +26,8 @@ type Seller struct {
 	Facebook  string
 	Instagram string
 	Pinterest string
+	Latitude  float64
+	Longitude float64
 	Schedule  []*DaySchedule
 }
 
