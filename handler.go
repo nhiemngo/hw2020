@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
+	"github.com/gorilla/mux"
 	"github.com/skip2/go-qrcode"
 	"html/template"
 	"net/http"
 	"strconv"
 )
 
-const baseURL = "34.201.161.162:2000"
+// make your changes accordingly
+const baseURL = "localhost:2000"
 
 type Links struct {
 	ViewLink  string
@@ -36,38 +38,32 @@ func viewTestSellerHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) viewHandler(w http.ResponseWriter, r *http.Request) {
-	queryString := r.URL.Query()
-	id := queryString.Get("id")
+	vars := mux.Vars(r)
+	id := vars["id"]
+
 	s := app.db.loadSeller(id)
 
 	address := s.Location
-
 	lat, lng := getGeocoding(address)
 	s.Latitude = lat
 	s.Longitude = lng
-
-	fmt.Printf("LOCATION: %f, %f", s.Latitude, s.Longitude)
 
 	tmpl, err := template.ParseFiles("templates/display.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-
 	err = tmpl.Execute(w, s)
 	if err != nil {
-		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 }
 
 func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
-
 	var ds []*DaySchedule
 
 	tmpl, err := template.ParseFiles("templates/form.html")
-
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -164,20 +160,20 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	id := app.db.save(currentSeller)
-	id_str := strconv.Itoa(int(id))
 
-	link := fmt.Sprintf("http://%v/view/?id=%v", baseURL, id_str)
-	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
+	idStr := strconv.Itoa(int(id))
+	link := fmt.Sprintf("http://%v/view/%v/", baseURL, idStr)
+	qrcode.WriteFile(link, qrcode.Medium, 256, idStr+"_qr.png")
 
-	http.Redirect(w, r, "/option/?id="+id_str, http.StatusFound)
+	http.Redirect(w, r, "/option/"+idStr, http.StatusFound)
 }
 
 func optionHandler(w http.ResponseWriter, r *http.Request) {
-	queryString := r.URL.Query()
-	id := queryString.Get("id")
+	vars := mux.Vars(r)
+	id := vars["id"]
 
-	viewURL := fmt.Sprintf("http://%v/view/?id=%v", baseURL, id)
-	qrURL := fmt.Sprintf("http://%v/order/?id=%v", baseURL, id)
+	viewURL := fmt.Sprintf("http://%v/view/%v/", baseURL, id)
+	qrURL := fmt.Sprintf("http://%v/order/%v/", baseURL, id)
 
 	urls := &Links{
 		ViewLink:  viewURL,
