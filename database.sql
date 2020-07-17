@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS seller;
 CREATE TABLE IF NOT EXISTS  seller(
 id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-name VARCHAR(30) NOT NULL,
+name VARCHAR(100) NOT NULL,
 about TEXT,
 logo TEXT,
 image TEXT,
@@ -20,11 +20,11 @@ third_image TEXT,
 fourth_image TEXT,
 phone VARCHAR(20),
 location VARCHAR(100),
-email VARCHAR(40),
-twitter VARCHAR(20),
-facebook VARCHAR(50),
-instagram VARCHAR(30),
-pinterest VARCHAR(30)
+email VARCHAR(100),
+twitter VARCHAR(100),
+facebook VARCHAR(100),
+instagram VARCHAR(100),
+pinterest VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS schedule (
