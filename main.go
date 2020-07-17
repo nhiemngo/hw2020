@@ -29,13 +29,13 @@ func main() {
 
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("templates/css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("templates/js"))))
+
 	http.HandleFunc("/", functionHandler)
 	http.HandleFunc("/view/", app.viewHandler)
 	http.HandleFunc("/testseller/", viewTestSellerHandler)
 	http.HandleFunc("/create/", app.createHandler)
-	http.HandleFunc("/login/", login)
-	http.HandleFunc("/logout/", logout)
-	http.HandleFunc("/secret/", secret)
+	http.HandleFunc("/option/", optionHandler)
+	http.HandleFunc("/order/", orderHandler)
 
 	http.ListenAndServe(":2000", nil)
 }

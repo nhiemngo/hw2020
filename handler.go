@@ -10,6 +10,11 @@ import (
 
 const baseURL = "24cdf7b47d2d.ngrok.io"
 
+type Links struct {
+	ViewLink  string
+	OrderLink string
+}
+
 func functionHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("insert landing page"))
 }
@@ -154,5 +159,44 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	link := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id_str)
 	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
 
-	http.Redirect(w, r, "/view/?id="+id_str, http.StatusFound)
+	http.Redirect(w, r, "/option/?id="+id_str, http.StatusFound)
+}
+
+func optionHandler(w http.ResponseWriter, r *http.Request) {
+	queryString := r.URL.Query()
+	id := queryString.Get("id")
+
+	viewURL := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id)
+	qrURL := fmt.Sprintf("https://%v/order/?id=%v", baseURL, id)
+
+	urls := &Links{
+		ViewLink:  viewURL,
+		OrderLink: qrURL,
+	}
+
+	fmt.Println(urls)
+
+	tmpl, err := template.ParseFiles("templates/options.html")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, urls)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+}
+
+func orderHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/qrcode.html")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
 }
