@@ -10,7 +10,7 @@ import (
 )
 
 // make your changes accordingly
-const baseURL = "localhost:2000"
+const baseURL = "34.201.161.162:2000"
 
 type Links struct {
 	ViewLink  string
