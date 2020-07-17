@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-const baseURL = "24cdf7b47d2d.ngrok.io"
+const baseURL = "34.201.161.162:2000"
 
 type Links struct {
 	ViewLink  string
@@ -156,7 +156,7 @@ func (app *application) createHandler(w http.ResponseWriter, r *http.Request) {
 	id := app.db.save(currentSeller)
 	id_str := strconv.Itoa(int(id))
 
-	link := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id_str)
+	link := fmt.Sprintf("http://%v/view/?id=%v", baseURL, id_str)
 	qrcode.WriteFile(link, qrcode.Medium, 256, id_str+"_qr.png")
 
 	http.Redirect(w, r, "/option/?id="+id_str, http.StatusFound)
@@ -166,8 +166,8 @@ func optionHandler(w http.ResponseWriter, r *http.Request) {
 	queryString := r.URL.Query()
 	id := queryString.Get("id")
 
-	viewURL := fmt.Sprintf("https://%v/view/?id=%v", baseURL, id)
-	qrURL := fmt.Sprintf("https://%v/order/?id=%v", baseURL, id)
+	viewURL := fmt.Sprintf("http://%v/view/?id=%v", baseURL, id)
+	qrURL := fmt.Sprintf("http://%v/order/?id=%v", baseURL, id)
 
 	urls := &Links{
 		ViewLink:  viewURL,
